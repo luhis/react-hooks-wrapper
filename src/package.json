@@ -1,0 +1,21 @@
+{
+  "description": "A React to present hooks as higher order functions",
+  "keywords": [
+    "react",
+    "higher-order",
+    "components",
+    "microcomponentization",
+    "toolkit",
+    "utilities",
+    "composition"
+  ],
+  "main": "dist/Recompose.cjs.js",
+  "module": "dist/Recompose.esm.js",
+  "dependencies": {
+    "@types/react": "^16.7.17",
+    "react": "^16.7.0"
+  },
+  "peerDependencies": {
+    "react": "^16.7.0"
+  }
+}
