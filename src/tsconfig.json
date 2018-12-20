@@ -3,8 +3,12 @@
         "target": "es5",
         "module": "commonjs",
         "sourceMap": true, 
-        "outDir": "build",
+        "declaration": true,
+        "outDir": "dist",
         "jsx": "react",
-        "alwaysStrict": true
+        "alwaysStrict": true,
+        "strict": true,
+        "strictNullChecks": true,
+        "skipLibCheck": true
     }
 }

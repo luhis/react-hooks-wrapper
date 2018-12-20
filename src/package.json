@@ -1,5 +1,7 @@
 {
-  "description": "A React to present hooks as higher order functions",
+  "name": "hookly",
+  "version": "0.0.2",
+  "description": "A React plugin to present hooks as higher order functions",
   "keywords": [
     "react",
     "higher-order",
@@ -9,13 +11,27 @@
     "utilities",
     "composition"
   ],
-  "main": "dist/Recompose.cjs.js",
-  "module": "dist/Recompose.esm.js",
+  "author": "Matt McCorry <mccorry@gmail.com>",
+  "license": "ISC",
+  "main": "dist/Index.js",
+  "types": "dist/Index.d.ts",
   "dependencies": {
-    "@types/react": "^16.7.17",
-    "react": "^16.7.0"
   },
   "peerDependencies": {
-    "react": "^16.7.0"
-  }
+    "react": "^16.7.0-alpha.2"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "mocha --reporter spec",
+    "lint": "tslint -p tsconfig.json --fix"
+  },
+  "devDependencies": {
+    "@types/react": "^16.7.17",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "react": "^16.7.0-alpha.2",
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
+  },
+  "files": ["dist/**/*"]
 }

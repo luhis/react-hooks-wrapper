@@ -1,0 +1,15 @@
+{
+  "name": "hookly-examples",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hookly": "^0.0.1",
+    "react": "^16.7.0-alpha.2"
+  }
+}

@@ -1,2 +1,2 @@
-export { default as stateWrapper } from './StateWrapper'
-export { default as effectWrapper } from './EffectWrapper'
+export { default as stateWrapper } from "./StateWrapper";
+export { default as effectWrapper } from "./EffectWrapper";

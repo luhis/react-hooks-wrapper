@@ -1,10 +1,12 @@
-import { useState, SFC, ReactElement, Dispatch, SetStateAction } from 'react'
+import { useState, FunctionComponent, ReactElement, Dispatch, SetStateAction } from "react";
+
+export type SetState<T extends {}> = Dispatch<SetStateAction<T>>;
 
 const StateWrapper =
-    <TProps extends {}, TState extends {}, TTransformed extends {}>
-        (defaultVal: TState, mapTupleToProps: ((tup: [TState, Dispatch<SetStateAction<TState>>]) => TTransformed)) =>
-        (component: SFC<TProps & TTransformed>) =>
-            (props: TProps): ReactElement<TProps & TTransformed> =>
+    <TState extends {}, TTransformed = {}>
+        (defaultVal: TState, mapTupleToProps: ((tup: [TState, SetState<TState>]) => TTransformed)) =>
+        <TProps = {}>(component: FunctionComponent<TProps & TTransformed>) =>
+            (props: TProps): (ReactElement<TProps & TTransformed> | null) =>
                 component({ ...props, ...mapTupleToProps(useState(defaultVal)) });
 
-export default StateWrapper
+export default StateWrapper;

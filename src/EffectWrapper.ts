@@ -1,8 +1,14 @@
-import { useEffect, SFC, ReactElement } from 'react'
+import { useEffect, ReactElement, FunctionComponent } from "react";
 
-const a = <TProps extends {}> (effectFuc: (props: TProps) => null) => (component: SFC<TProps>) => (props: TProps): ReactElement<TProps> => {
-    useEffect(() => effectFuc(props));
-    return component(props);
-}
+type EffectResponse = void | (() => void);
 
-export default a;
+const EffectWrapper =
+    <TProps = {}>
+        (effectFuc: (props: TProps) => EffectResponse) =>
+        (component: FunctionComponent<TProps>) =>
+        (props: TProps): (ReactElement<TProps> | null) => {
+            useEffect(() => effectFuc(props));
+            return component(props);
+        };
+
+export default EffectWrapper;
