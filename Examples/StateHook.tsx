@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 const Counter: React.FunctionComponent<{ name: string }> = ({ name }) => {
     const [count, setCount] = React.useState(1);
@@ -8,7 +8,7 @@ const Counter: React.FunctionComponent<{ name: string }> = ({ name }) => {
             Click me
       </button>
     </div>;
-}
+};
 
 
 export default Counter;

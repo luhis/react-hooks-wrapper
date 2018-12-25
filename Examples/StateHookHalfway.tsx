@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 const Counter:
     React.FunctionComponent<{ count: number, name: string, setCount: React.Dispatch<React.SetStateAction<number>> }> =
@@ -9,11 +9,11 @@ const Counter:
                 Click me
       </button>
         </div>;
-    }
+    };
 
 const CounterContainer: React.FunctionComponent<{ name: string }> = ({ name }) => {
     const [count, setCount] = React.useState(1);
-    return <Counter name={name} count={count} setCount={setCount} />
-}
+    return <Counter name={name} count={count} setCount={setCount} />;
+};
 
 export default CounterContainer;

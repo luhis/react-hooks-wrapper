@@ -1,7 +1,7 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { stateWrapper } from 'hookly';
-import { SetState } from 'hookly/dist/StateWrapper';
+import { stateWrapper } from "hookly";
+import { SetState } from "hookly/dist/StateWrapper";
 
 type Props = { count: number, name: string } & { setCount: SetState<number> };
 
