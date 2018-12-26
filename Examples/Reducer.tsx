@@ -1,32 +1,31 @@
 import * as React from "react";
-
 import { reducerWrapper } from "hookly";
 
-type Props = { count: number, name: string } & { dispatch: React.Dispatch<Action> };
+type State = { count: number };
 
-type Action = 'increment' | 'decrement' | 'reset';
+type Props = { state: State, name: string } & { dispatch: React.Dispatch<Action> };
 
-const reducer: React.Reducer<number, Action> = (state, action) => {
-    switch (action) {
-      case 'reset':
-        return 0;
-      case 'increment':
-        return state + 1;
-      case 'decrement':
-        return state - 1;
-      default:
-        // A reducer must always return a valid state.
-        // Alternatively you can throw an error if an invalid action is dispatched.
-        return state;
+type Action = { type: "increment" } | { type: "decrement" } | { type: "reset" };
+
+const reducer: React.Reducer<State, Action> = (state, action) => {
+    switch (action.type) {
+        case "reset":
+            return { count: 0 };
+        case "increment":
+            return { count: state.count + 1 };
+        case "decrement":
+            return { count: state.count - 1 };
+        default:
+            return state;
     }
-  }
+};
 
-const Counter: React.FunctionComponent<Props> = ({ count, dispatch, name }) =>
-  <div>
-    <p>Hi {name}, You clicked {count} times</p>
-    <button onClick={() => dispatch('increment')}>
-      Click me
+const Counter: React.FunctionComponent<Props> = ({ state, dispatch, name }) =>
+    <div>
+        <p>Hi {name}, You clicked {state.count} times</p>
+        <button onClick={() => dispatch({ type: "increment" })}>
+            Click me
       </button>
-  </div>;
+    </div>;
 
-export default reducerWrapper(reducer, 1, ([count, dispatch]) => ({ count, dispatch }))(Counter);
+export default reducerWrapper(reducer, { count: 0 }, ([state, dispatch]) => ({ state, dispatch }))(Counter);
