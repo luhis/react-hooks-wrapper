@@ -3,7 +3,9 @@ import { reducerWrapper } from "hookly";
 
 type State = { count: number };
 
-type Props = { state: State, name: string } & { dispatch: React.Dispatch<Action> };
+type FinalProps = {name: string};
+
+type Props = FinalProps & { state: State} & { dispatch: React.Dispatch<Action> };
 
 type Action = { type: "increment" } | { type: "decrement" } | { type: "reset" };
 
@@ -28,4 +30,7 @@ const Counter: React.FunctionComponent<Props> = ({ state, dispatch, name }) =>
       </button>
     </div>;
 
-export default reducerWrapper(reducer, { count: 0 }, ([state, dispatch]) => ({ state, dispatch }))(Counter);
+const Container: React.FunctionComponent<FinalProps> = reducerWrapper(reducer, { count: 0 }, ([state, dispatch]) =>
+    ({ state, dispatch }))<FinalProps>(Counter);
+
+export default Container;
