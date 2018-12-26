@@ -1,6 +1,6 @@
 {
   "name": "hookly",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "A React plugin to present hooks as higher order functions",
   "keywords": [
     "react",

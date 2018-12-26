@@ -1,6 +1,5 @@
-import { useState, FunctionComponent, ReactElement, Dispatch, SetStateAction } from "react";
-
-export type SetState<T extends {}> = Dispatch<SetStateAction<T>>;
+import { useState, FunctionComponent, ReactElement } from "react";
+import SetState from "./SetState";
 
 type TypeDef = <TState extends {}, TTransformed = {}>
     (defaultVal: TState, mapTupleToProps: ((tup: [TState, SetState<TState>]) => TTransformed)) =>

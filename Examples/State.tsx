@@ -1,9 +1,8 @@
 import * as React from "react";
 
-import { stateWrapper } from "hookly";
-import { SetState } from "hookly/dist/StateWrapper";
+import { stateWrapper, setState } from "hookly";
 
-type Props = { count: number, name: string } & { setCount: SetState<number> };
+type Props = { count: number, name: string } & { setCount: setState<number> };
 
 const Counter: React.FunctionComponent<Props> = ({ count, setCount, name }) =>
   <div>
