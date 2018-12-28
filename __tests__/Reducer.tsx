@@ -1,5 +1,6 @@
 import * as React from "react";
-import { reducerWrapper } from "hookly";
+
+import reducerWrapper from "../ReducerWrapper";
 
 type State = { count: number };
 
@@ -27,7 +28,7 @@ const Counter: React.FunctionComponent<Props> = ({ state, dispatch, name }) =>
         <p>Hi {name}, You clicked {state.count} times</p>
         <button onClick={() => dispatch({ type: "increment" })}>
             Click me
-      </button>
+        </button>
     </div>;
 
 const Container: React.FunctionComponent<FinalProps> = reducerWrapper(reducer, { count: 0 }, ([state, dispatch]) =>

@@ -1,6 +1,6 @@
 {
   "name": "hookly",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "description": "A React plugin to present hooks as higher order functions",
   "keywords": [
     "react",
@@ -9,29 +9,34 @@
     "microcomponentization",
     "toolkit",
     "utilities",
-    "composition"
+    "composition",
+    "recompose"
   ],
   "author": "Matt McCorry <mccorry@gmail.com>",
   "license": "ISC",
   "main": "dist/Index.js",
   "types": "dist/Index.d.ts",
   "dependencies": {
+    "@types/jest": "^23.3.10",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.5",
+    "ts-transformer-keys": "^0.3.4"
   },
   "peerDependencies": {
     "react": "^16.7.0-alpha.2"
   },
   "scripts": {
     "build": "tsc",
-    "test": "mocha --reporter spec",
+    "test": "jest --config jestconfig.json",
     "lint": "tslint -p tsconfig.json --fix"
   },
   "devDependencies": {
     "@types/react": "^16.7.17",
-    "chai": "^4.2.0",
-    "mocha": "^5.2.0",
     "react": "^16.7.0-alpha.2",
     "tslint": "^5.12.0",
     "typescript": "^3.2.2"
   },
-  "files": ["dist/**/*"]
+  "files": [
+    "dist/**/*"
+  ]
 }

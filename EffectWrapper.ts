@@ -1,11 +1,10 @@
-import { useEffect, ReactElement, FunctionComponent } from "react";
+import { useEffect, FunctionComponent } from "react";
 
 type EffectResponse = void | (() => void);
 
 type TypeDef = <TProps = {}>
     (effectFuc: (props: TProps) => EffectResponse) =>
-    (component: FunctionComponent<TProps>) =>
-        (props: TProps) => (ReactElement<TProps> | null);
+    (component: FunctionComponent<TProps>) => FunctionComponent<TProps>;
 
 const EffectWrapper: TypeDef =
     effectFuc =>

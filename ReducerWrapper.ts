@@ -1,15 +1,23 @@
-import { FunctionComponent, ReactElement, Dispatch, useReducer, Reducer } from "react";
+import { FunctionComponent, Dispatch, useReducer, Reducer } from "react";
 
-type TypeDef = <TState extends {}, TTransformed extends {}, TAction extends {}>
+import { Omit } from "./TypeFunctions";
+
+type TypeDef = <TState extends {}, TTransformed extends {}, TAction extends {}, TNeedsProps extends {}>
     (reducer: Reducer<TState, TAction>,
-        initialState: TState, mapTupleToProps: ((tup: [TState, Dispatch<TAction>]) => TTransformed), initialAction: TAction | null) =>
-    <TProps = {}>(component: FunctionComponent<TProps & TTransformed>) =>
-        (props: TProps) => (ReactElement<TProps & TTransformed> | null);
+    initialState: TState, mapTupleToProps: ((tup: [TState, Dispatch<TAction>]) => TTransformed),
+    initialAction?: TAction) =>
+    <P extends TTransformed >(component: FunctionComponent<P>) => FunctionComponent<Omit<P, keyof (TTransformed)> & TNeedsProps>;
 
 const StateWrapper: TypeDef =
-    (reducer, initialState, mapTupleToProps, initialAction) =>
-        component =>
-            props =>
-                component({ ...props, ...mapTupleToProps(useReducer(reducer, initialState, initialAction)) });
+    <TState, TTransformed, TAction>
+        (reducer: Reducer<TState, TAction>,
+            initialState: TState,
+            mapTupleToProps: ((tup: [TState, Dispatch<TAction>]) => TTransformed),
+            initialAction?: TAction) =>
+        <P>(component: FunctionComponent<P>) =>
+            props => {
+                const finalProps: P = { ...props, ...mapTupleToProps(useReducer(reducer, initialState, initialAction)) } as unknown as P;
+                return component(finalProps);
+            };
 
 export default StateWrapper;

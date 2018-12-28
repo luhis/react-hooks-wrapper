@@ -1,12 +1,12 @@
 # hookly
 
-This project aims to overcome some of the issues in React Hooks.  It should also allow for easier migration from Recompose to React Hooks
+This project aims to overcome some of the issues in React Hooks.  It should also allow for easier migration from Recompose to React Hooks.
 
 Consider the following example:
 
 ```TypeScript
-const Counter: React.FunctionComponent<{ name: string }> = ({ name }) => {
-    const [count, setCount] = React.useState(1);
+const Counter: FunctionComponent<{ name: string }> = ({ name }) => {
+    const [count, setCount] = useState(1);
     return <div>
         <p>Hi {name}, You clicked {count} times</p>
         <button onClick={() => setCount(count + 1)}>
@@ -22,18 +22,18 @@ We can fix this by splitting the presentation and the state into two components,
 
 ```TypeScript
 const Counter:
-    React.FunctionComponent<{ count: number, name: string, setCount: React.Dispatch<React.SetStateAction<number>> }> =
+    FunctionComponent<{ count: number, name: string, setCount: Dispatch<SetStateAction<number>> }> =
     ({ name, count, setCount }) => {
         return <div>
             <p>Hi {name}, You clicked {count} times</p>
             <button onClick={() => setCount(count + 1)}>
                 Click me
-      </button>
+            </button>
         </div>;
     }
 
-const CounterContainer: React.FunctionComponent<{ name: string }> = ({ name }) => {
-    const [count, setCount] = React.useState(1);
+const CounterContainer: FunctionComponent<{ name: string }> = ({ name }) => {
+    const [count, setCount] = useState(1);
     return <Counter name={name} count={count} setCount={setCount} />
 }
 ```
@@ -44,13 +44,13 @@ It is possible to abstract the container component further, eventually creating 
 type FinalComponentProps = {name: string};
 type Props = FinalComponentProps & { count: number } & { setCount: setState<number> };
 
-const Counter: React.FunctionComponent<Props> = ({ count, setCount, name }) =>
+const Counter: FunctionComponent<Props> = ({ count, setCount, name }) =>
   <div>
     <p>Hi {name}, You clicked {count} times</p>
     <button onClick={() => setCount(count + 1)}>
       Click me
-      </button>
+    </button>
   </div>;
 
-const CounterContainer: React.FunctionComponent<FinalComponentProps> = stateWrapper(1, ([count, setCount]) => ({ count, setCount }))<FinalComponentProps>(Counter);
+const CounterContainer: FunctionComponent<FinalComponentProps> = stateWrapper(1, ([count, setCount]) => ({ count, setCount }))<FinalComponentProps>(Counter);
 ```

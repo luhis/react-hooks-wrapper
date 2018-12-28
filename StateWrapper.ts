@@ -1,15 +1,18 @@
-import { useState, FunctionComponent, ReactElement } from "react";
-import SetState from "./SetState";
+import { useState, FunctionComponent } from "react";
 
-type TypeDef = <TState extends {}, TTransformed extends {}>
+import SetState from "./SetState";
+import { Omit } from "./TypeFunctions";
+
+type TypeDef = <TState extends {}, TTransformed extends {}, TNeedsProps extends {}>
     (defaultVal: TState, mapTupleToProps: ((tup: [TState, SetState<TState>]) => TTransformed)) =>
-    <TProps extends {}>(component: FunctionComponent<TProps & TTransformed>) =>
-        (props: TProps) => (ReactElement<TProps & TTransformed> | null);
+    <P extends TTransformed >(component: FunctionComponent<P>) => FunctionComponent<Omit<P, keyof (TTransformed)> & TNeedsProps>;
 
 const StateWrapper: TypeDef =
-    (defaultVal, mapTupleToProps) =>
-        component =>
-            props => component({ ...props, ...mapTupleToProps(useState(defaultVal)) });
-
-
+    <TState, TTransformed>
+        (defaultVal: TState, mapTupleToProps: ((tup: [TState, SetState<TState>]) => TTransformed)) =>
+        <P>(component: FunctionComponent<P>) =>
+            props => {
+                const finalProps: P = { ...props, ...mapTupleToProps(useState(defaultVal)) } as unknown as P;
+                return component(finalProps);
+            };
 export default StateWrapper;

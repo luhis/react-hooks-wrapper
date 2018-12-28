@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { stateWrapper, setState } from "hookly";
 
-type FinalComponentProps = {name: string};
+type FinalComponentProps = { name: string };
 type Props = FinalComponentProps & { count: number } & { setCount: setState<number> };
 
 const Counter: React.FunctionComponent<Props> = ({ count, setCount, name }) =>
@@ -13,7 +13,8 @@ const Counter: React.FunctionComponent<Props> = ({ count, setCount, name }) =>
       </button>
   </div>;
 
-const CounterContainer: React.FunctionComponent<FinalComponentProps> = stateWrapper(1, ([count, setCount]) =>
-  ({ count, setCount }))<FinalComponentProps>(Counter);
+const CounterContainer: React.ComponentType<FinalComponentProps>
+  = stateWrapper(1, ([count, setCount]) =>
+    ({ count, setCount }))(Counter);
 
 export default CounterContainer;
