@@ -16,7 +16,9 @@ const StateWrapper: TypeDef =
             initialAction?: TAction) =>
         <P extends TTransformed>(component: FunctionComponent<P>) =>
             (props: Omit<P, keyof (TTransformed)> & TNeedsProps & { children?: ReactNode }) => {
-                return component(ReconstituteFunctionComponent(props, mapTupleToProps(useReducer(reducer, initialState, initialAction))));
+                const transformed: TTransformed = mapTupleToProps(useReducer(reducer, initialState, initialAction));
+                const finalProps: P = ReconstituteFunctionComponent(props, transformed);
+                return component(finalProps);
             };
 
 export default StateWrapper;
