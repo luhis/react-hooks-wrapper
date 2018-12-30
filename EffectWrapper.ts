@@ -2,7 +2,7 @@ import { useEffect, FunctionComponent } from "react";
 
 type EffectResponse = void | (() => void);
 
-type TypeDef = <TProps = {}>
+type TypeDef = <TProps>
     (effectFuc: (props: TProps) => EffectResponse) =>
     (component: FunctionComponent<TProps>) => FunctionComponent<TProps>;
 
