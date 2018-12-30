@@ -2,7 +2,7 @@
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
-        "sourceMap": true, 
+        "sourceMap": true,
         "declaration": true,
         "outDir": "dist",
         "jsx": "react",
@@ -10,5 +10,9 @@
         "strict": true,
         "strictNullChecks": true,
         "skipLibCheck": true
-    }
+    },
+    "exclude": [
+        "./Examples/*",
+        "**/*.spec.*"
+    ]
 }
