@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as renderer from 'react-test-renderer';
 
 import { effectWrapper, stateWrapper, setState } from "../Index";
 
@@ -19,9 +20,9 @@ const effectFuc: (props: Props) => void = ({ count }) => {
 
 const mapTuple: (tup: [number, SetVal]) => Props = ([count, setCount]: [number, SetVal]) => ({ count, setCount });
 
-const stateContainer = stateWrapper(1 as number, mapTuple)(effectWrapper(effectFuc)(CounterWithDocumentTitleUpdate));
+const Container: React.FunctionComponent = stateWrapper(1 as number, mapTuple)(effectWrapper(effectFuc)(CounterWithDocumentTitleUpdate));
 
-test("StateWrapper should", () => {
-    const sut = stateContainer({  });
-    expect(sut).toBeTruthy();
+test("EffectWrapper should", () => {
+    const myComponent = renderer.create(<Container/>).toJSON();
+    expect(myComponent).toBeTruthy();
 });

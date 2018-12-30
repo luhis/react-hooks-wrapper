@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as renderer from 'react-test-renderer';
 
 import { stateWrapper, setState } from "../Index";
 
@@ -17,7 +18,7 @@ const CounterContainer: React.ComponentType<FinalComponentProps>
     = stateWrapper(1, ([count, setCount]) =>
         ({ count, setCount }))(Counter);
 
-test("ReducerWrapper should", () => {
-    const sut = CounterContainer({ name: "matt" });
-    expect(sut).toBeTruthy();
+test("StateWrapper should", () => {
+    const myComponent = renderer.create(<CounterContainer name="matt"/>).toJSON();
+    expect(myComponent).toBeTruthy();
 });

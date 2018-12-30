@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as renderer from 'react-test-renderer';
 
 import reducerWrapper from "../ReducerWrapper";
 
@@ -35,6 +36,6 @@ const Container: React.FunctionComponent<FinalProps> = reducerWrapper(reducer, {
     ({ state, dispatch }))(Counter);
 
 test("ReducerWrapper should", () => {
-    const sut = Container({name: "matt"});
-    expect(sut).toBeTruthy();
+    const myComponent = renderer.create(<Container name="matt"/>).toJSON();
+    expect(myComponent).toBeTruthy();
   });

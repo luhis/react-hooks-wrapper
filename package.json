@@ -30,15 +30,16 @@
     "lint": "tslint -p tsconfig.json --fix"
   },
   "devDependencies": {
-    "@types/react": "^16.7.17",
-    "react": "16.7.0-alpha.2",
-    "tslint": "^5.12.0",
-    "typescript": "^3.2.2",
     "@types/jest": "^23.3.10",
+    "@types/react": "^16.7.17",
+    "@types/react-test-renderer": "^16.0.3",
     "jest": "^23.6.0",
+    "react": "16.7.0-alpha.2",
     "react-test-renderer": "16.7.0-alpha.2",
     "ts-jest": "^23.10.5",
-    "ts-transformer-keys": "^0.3.4"
+    "ts-transformer-keys": "^0.3.4",
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
   },
   "files": [
     "dist/**/*"
