@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "hookly": "^0.0.9",
+    "hookly": "^0.0.10",
     "react": "^16.7.0-alpha.2"
   }
 }

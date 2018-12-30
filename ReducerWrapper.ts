@@ -1,6 +1,6 @@
-import { FunctionComponent, Dispatch, useReducer, Reducer } from "react";
+import { FunctionComponent, Dispatch, useReducer, Reducer, ReactNode } from "react";
 
-import { Omit } from "./TypeFunctions";
+import { Omit, ReconstituteFunctionComponent } from "./TypeFunctions";
 
 type TypeDef = <TState extends {}, TTransformed extends {}, TAction extends {}, TNeedsProps extends {}>
     (reducer: Reducer<TState, TAction>,
@@ -9,15 +9,14 @@ type TypeDef = <TState extends {}, TTransformed extends {}, TAction extends {}, 
     <P extends TTransformed >(component: FunctionComponent<P>) => FunctionComponent<Omit<P, keyof (TTransformed)> & TNeedsProps>;
 
 const StateWrapper: TypeDef =
-    <TState, TTransformed, TAction>
+    <TState extends {}, TTransformed extends {}, TAction extends {}, TNeedsProps extends {}>
         (reducer: Reducer<TState, TAction>,
             initialState: TState,
             mapTupleToProps: ((tup: [TState, Dispatch<TAction>]) => TTransformed),
             initialAction?: TAction) =>
-        <P>(component: FunctionComponent<P>) =>
-            props => {
-                const finalProps: P = { ...props, ...mapTupleToProps(useReducer(reducer, initialState, initialAction)) } as unknown as P;
-                return component(finalProps);
+        <P extends TTransformed>(component: FunctionComponent<P>) =>
+            (props: Omit<P, keyof (TTransformed)> & TNeedsProps & { children?: ReactNode }) => {
+                return component(ReconstituteFunctionComponent(props, mapTupleToProps(useReducer(reducer, initialState, initialAction))));
             };
 
 export default StateWrapper;
