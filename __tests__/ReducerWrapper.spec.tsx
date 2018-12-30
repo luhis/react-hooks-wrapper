@@ -34,4 +34,7 @@ const Counter: React.FunctionComponent<Props> = ({ state, dispatch, name }) =>
 const Container: React.FunctionComponent<FinalProps> = reducerWrapper(reducer, { count: 0 }, ([state, dispatch]) =>
     ({ state, dispatch }))(Counter);
 
-export default Container;
+test("ReducerWrapper should", () => {
+    const sut = Container({name: "matt"});
+    expect(sut).toBeTruthy();
+  });
