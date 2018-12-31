@@ -10,5 +10,4 @@ const Counter: React.FunctionComponent<{ name: string }> = ({ name }) => {
     </div>;
 };
 
-
 export default Counter;

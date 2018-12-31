@@ -4,12 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-scripts start",
+    "lint": "tslint -p tsconfig.json --fix"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^10.12.18",
+    "@types/react-dom": "^16.0.11",
     "hookly": "^0.0.10",
-    "react": "^16.7.0-alpha.2"
-  }
+    "react": "^16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2",
+    "react-scripts": "^2.1.2",
+    "typescript": "^3.2.2"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
