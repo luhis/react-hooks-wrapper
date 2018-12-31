@@ -4,15 +4,15 @@ import { Omit, ReconstituteFunctionComponent, TupleToObject } from "./TypeFuncti
 
 type TypeDef = <TState extends object, TTransformed extends object, TAction extends object>
     (reducer: Reducer<TState, TAction>,
-    initialState: TState, mapTupleToProps: TupleToObject<[TState, Dispatch<TAction>], TTransformed>,
+    initialState: TState, mapTupleToProps: TupleToObject<TState, Dispatch<TAction>, TTransformed>,
     initialAction?: TAction) =>
     <P extends TTransformed >(component: FunctionComponent<P>) => FunctionComponent<Omit<P, keyof TTransformed>>;
 
-const StateWrapper: TypeDef =
+const ReducerWrapper: TypeDef =
     <TState extends object, TTransformed extends object, TAction extends object>
         (reducer: Reducer<TState, TAction>,
             initialState: TState,
-            mapTupleToProps: TupleToObject<[TState, Dispatch<TAction>], TTransformed>,
+            mapTupleToProps: TupleToObject<TState, Dispatch<TAction>, TTransformed>,
             initialAction?: TAction) =>
         <P extends TTransformed>(component: FunctionComponent<P>) =>
             (props: Omit<P, keyof TTransformed> & { children?: ReactNode }) => {
@@ -21,4 +21,4 @@ const StateWrapper: TypeDef =
                 return component(finalProps);
             };
 
-export default StateWrapper;
+export default ReducerWrapper;

@@ -3,7 +3,7 @@ import { FunctionComponent, useState, Dispatch, SetStateAction } from "react";
 type Props = { count: number, name: string, setCount: Dispatch<SetStateAction<number>> };
 
 const Counter:
-    FunctionComponent<P> =
+    FunctionComponent<Props> =
     ({ name, count, setCount }) => {
         return <div>
             <p>Hi {name}, You clicked {count} times</p>

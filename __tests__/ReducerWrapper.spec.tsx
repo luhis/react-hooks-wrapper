@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
 
-import reducerWrapper from "../ReducerWrapper";
+import { reducerWrapper } from "../Index";
 
 type State = { count: number };
 
@@ -36,6 +36,6 @@ const Container: React.FunctionComponent<FinalProps> = reducerWrapper(reducer, {
     ({ state, dispatch }))(Counter);
 
 test("ReducerWrapper should", () => {
-    const myComponent = renderer.create(<Container name="matt"/>).toJSON();
+    const myComponent = renderer.create(<Container name="matt" />).toJSON();
     expect(myComponent).toBeTruthy();
-  });
+});

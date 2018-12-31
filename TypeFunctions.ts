@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, FunctionComponent } from "react";
 
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
@@ -9,4 +9,12 @@ export const ReconstituteFunctionComponent: <TFinal extends TOther, TOther exten
         return { ...props, ...other } as unknown as TFinal;
     };
 
-export type TupleToObject<TIn extends any[], TOut extends object> = (tup: TIn) => TOut;
+export type TupleToObject<TLeft, TRight extends Function, TOut extends object> = (_: [TLeft, TRight]) => TOut;
+
+export type Func<TIn extends object, TOut extends object> = (_: TIn) => TOut;
+
+export const Compose: <TReturn extends object, TIn extends object, TIntermediary extends object>
+    (a: Func<FunctionComponent<TIntermediary>, FunctionComponent<TReturn>>,
+    b: Func<FunctionComponent<TIn>, FunctionComponent<TIntermediary>>)
+    => Func<FunctionComponent<TIn>, FunctionComponent<TReturn>> =
+    (a, b) => p => a(b(p));
