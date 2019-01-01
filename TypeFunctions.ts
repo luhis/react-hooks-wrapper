@@ -2,7 +2,7 @@ import { ReactNode, FunctionComponent } from "react";
 
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
-export const ReconstituteFunctionComponent: <TFinal extends TOther, TOther extends object>
+export const ReconstituteProps: <TFinal extends TOther, TOther extends object>
     (props: Omit<TFinal, keyof (TOther)> & { children?: ReactNode }, other: TOther) => TFinal =
     <TFinal extends TOther, TOther extends object>
         (props: Omit<TFinal, keyof (TOther)> & { children?: ReactNode }, other: TOther) => {

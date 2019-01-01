@@ -1,6 +1,6 @@
 import { FunctionComponent, Dispatch, useReducer, Reducer, ReactNode } from "react";
 
-import { Omit, ReconstituteFunctionComponent, TupleToObject } from "./TypeFunctions";
+import { Omit, ReconstituteProps, TupleToObject } from "./TypeFunctions";
 
 type TypeDef = <TState extends object, TTransformed extends object, TAction extends object>
     (reducer: Reducer<TState, TAction>,
@@ -17,7 +17,7 @@ const ReducerWrapper: TypeDef =
         <P extends TTransformed>(component: FunctionComponent<P>) =>
             (props: Omit<P, keyof TTransformed> & { children?: ReactNode }) => {
                 const transformed: TTransformed = mapTupleToProps(useReducer(reducer, initialState, initialAction));
-                const finalProps: P = ReconstituteFunctionComponent(props, transformed);
+                const finalProps: P = ReconstituteProps(props, transformed);
                 return component(finalProps);
             };
 
