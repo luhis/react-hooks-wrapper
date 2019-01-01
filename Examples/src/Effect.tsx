@@ -16,6 +16,6 @@ const effectFuc: (props: IProps) => void = ({ count }) => {
     document.title = `You clicked ${count} times`;
 };
 
-const mapTuple: (tup: [number, SetVal]) => IProps = ([count, setCount]: [number, SetVal]) => ({ count, setCount });
+const mapTuple = ([count, setCount]: [number, SetVal]) => ({ count, setCount });
 
 export default stateWrapper(1 as number, mapTuple)(effectWrapper(effectFuc)(CounterWithDocumentTitleUpdate));
