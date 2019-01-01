@@ -2,7 +2,7 @@ import * as React from "react";
 import * as renderer from "react-test-renderer";
 import { FunctionComponent } from "react";
 
-import { effectWrapper, stateWrapper, setState, Compose, TupleToObject, Func } from "../Index";
+import { effectWrapper, stateWrapper, setState, Compose, TupleToObject, Func } from "../src/Index";
 
 type SetVal = setState<number>;
 type Props = { count: number, setCount: SetVal };

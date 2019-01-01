@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
 
-import { stateWrapper, setState } from "../Index";
+import { stateWrapper, setState } from "../src/Index";
 
 type FinalComponentProps = { name: string };
 type Props = FinalComponentProps & { count: number } & { setCount: setState<number> };

@@ -1,8 +1,7 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
 
-import { effectWrapper, stateWrapper, setState } from "../Index";
-import { TupleToObject } from "../TypeFunctions";
+import { effectWrapper, stateWrapper, setState, TupleToObject } from "../src/Index";
 
 type SetVal = setState<number>;
 type Props = { count: number, setCount: SetVal };

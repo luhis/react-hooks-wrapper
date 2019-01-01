@@ -1,4 +1,4 @@
-import { ReconstituteProps } from "../TypeFunctions";
+import { ReconstituteProps } from "../src/Index";
 
 test("reconstitute should", () => {
   type extras = { c: number };

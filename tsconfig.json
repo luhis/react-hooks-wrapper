@@ -11,9 +11,7 @@
         "strictNullChecks": true,
         "skipLibCheck": true
     },
-    "exclude": [
-        "./Examples/*",
-        "**/*.spec.*",
-        "./Dist/*"
+    "include": [
+      "src"
     ]
 }
