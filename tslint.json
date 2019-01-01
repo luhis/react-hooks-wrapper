@@ -1,12 +1,14 @@
 {
     "defaultSeverity": "error",
     "extends": [
-        "tslint:recommended"
+        "tslint:recommended",
+        "tslint-immutable/all"
     ],
     "jsRules": {},
     "rules": {
         "no-any": true,
         "only-arrow-functions": true,
+        "no-expression-statement": false //required for useEffect
     },
     "rulesDirectory": [
     ]

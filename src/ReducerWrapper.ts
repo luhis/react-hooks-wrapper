@@ -15,7 +15,7 @@ const ReducerWrapper: TypeDef =
          mapTupleToProps: TupleToObject<TState, Dispatch<TAction>, TTransformed>,
          initialAction?: TAction) =>
         <P extends TTransformed>(component: FunctionComponent<P>) =>
-            (props: Omit<P, keyof TTransformed> & { children?: ReactNode }) => {
+            (props: Omit<P, keyof TTransformed> & { readonly children?: ReactNode }) => {
                 const transformed: TTransformed = mapTupleToProps(useReducer(reducer, initialState, initialAction));
                 const finalProps: P = ReconstituteProps(props, transformed);
                 return component(finalProps);
