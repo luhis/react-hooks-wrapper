@@ -1,12 +1,12 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
 
-import { effectWrapper, stateWrapper, setState, TupleToObject } from "../src/Index";
+import { effectWrapper, setState, stateWrapper, TupleToObject } from "../src/Index";
 
 type SetVal = setState<number>;
-type Props = { count: number, setCount: SetVal };
+interface IProps { readonly count: number; readonly setCount: SetVal; }
 
-const CounterWithDocumentTitleUpdate: React.FunctionComponent<Props> = ({ count, setCount }) =>
+const CounterWithDocumentTitleUpdate: React.FunctionComponent<IProps> = ({ count, setCount }) =>
     <div>
         <p>You clicked {count} times</p>
         <button onClick={() => setCount(count + 1)}>
@@ -14,13 +14,14 @@ const CounterWithDocumentTitleUpdate: React.FunctionComponent<Props> = ({ count,
       </button>
     </div>;
 
-const effectFuc: (props: Props) => void = ({ count }) => {
+const effectFuc: (props: IProps) => void = ({ count }) => {
     document.title = `You clicked ${count} times`;
 };
 
-const mapTuple: TupleToObject<number, SetVal, Props> = ([count, setCount]: [number, SetVal]) => ({ count, setCount });
+const mapTuple: TupleToObject<number, SetVal, IProps> = ([count, setCount]: [number, SetVal]) => ({ count, setCount });
 
-const Container: React.FunctionComponent = stateWrapper(1 as number, mapTuple)(effectWrapper(effectFuc)(CounterWithDocumentTitleUpdate));
+const Container: React.FunctionComponent = 
+    stateWrapper(1 as number, mapTuple)(effectWrapper(effectFuc)(CounterWithDocumentTitleUpdate));
 
 test("EffectWrapper should", () => {
     const myComponent = renderer.create(<Container/>).toJSON();

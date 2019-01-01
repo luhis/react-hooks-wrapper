@@ -1,10 +1,10 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
 
-import { stateWrapper, setState } from "../src/Index";
+import { setState, stateWrapper } from "../src/Index";
 
-type FinalComponentProps = { name: string };
-type Props = FinalComponentProps & { count: number } & { setCount: setState<number> };
+interface IFinalComponentProps { readonly name: string; }
+type Props = IFinalComponentProps & { readonly count: number } & { readonly setCount: setState<number> };
 
 const Counter: React.FunctionComponent<Props> = ({ count, setCount, name }) =>
     <div>
@@ -14,7 +14,7 @@ const Counter: React.FunctionComponent<Props> = ({ count, setCount, name }) =>
       </button>
     </div>;
 
-const CounterContainer: React.ComponentType<FinalComponentProps>
+const CounterContainer: React.ComponentType<IFinalComponentProps>
     = stateWrapper(1, ([count, setCount]) =>
         ({ count, setCount }))(Counter);
 

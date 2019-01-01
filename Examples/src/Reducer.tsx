@@ -1,15 +1,15 @@
-import * as React from "react";
 import { reducerWrapper } from "hookly";
+import * as React from "react";
 
-type State = { count: number };
+interface IState { readonly count: number; }
 
-type FinalProps = { name: string };
+interface IFinalProps { readonly name: string; }
 
-type Props = FinalProps & { state: State } & { dispatch: React.Dispatch<Action> };
+type Props = IFinalProps & { readonly state: IState } & { readonly dispatch: React.Dispatch<Action> };
 
-type Action = { type: "increment" } | { type: "decrement" } | { type: "reset" };
+type Action = { readonly type: "increment" } | { readonly type: "decrement" } | { readonly type: "reset" };
 
-const reducer: React.Reducer<State, Action> = (state, action) => {
+const reducer: React.Reducer<IState, Action> = (state, action) => {
     switch (action.type) {
         case "reset":
             return { count: 0 };
@@ -30,7 +30,7 @@ const Counter: React.FunctionComponent<Props> = ({ state, dispatch, name }) =>
       </button>
     </div>;
 
-const Container: React.FunctionComponent<FinalProps> = reducerWrapper(reducer, { count: 0 }, ([state, dispatch]) =>
+const Container: React.FunctionComponent<IFinalProps> = reducerWrapper(reducer, { count: 0 }, ([state, dispatch]) =>
     ({ state, dispatch }))(Counter);
 
 export default Container;

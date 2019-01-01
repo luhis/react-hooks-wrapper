@@ -1,11 +1,13 @@
+import { setState, stateWrapper } from "hookly";
 import * as React from "react";
 
-import { stateWrapper, setState } from "hookly";
+interface IProps {
+  readonly count: number;
+  readonly name: string;
+  readonly setCount: setState<number>;
+}
 
-type FinalComponentProps = { name: string };
-type Props = FinalComponentProps & { count: number } & { setCount: setState<number> };
-
-const Counter: React.FunctionComponent<Props> = ({ count, setCount, name }) =>
+const Counter: React.FunctionComponent<IProps> = ({ count, setCount, name }) =>
   <div>
     <p>Hi {name}, You clicked {count} times</p>
     <button onClick={() => setCount(count + 1)}>
@@ -13,8 +15,7 @@ const Counter: React.FunctionComponent<Props> = ({ count, setCount, name }) =>
       </button>
   </div>;
 
-const CounterContainer: React.ComponentType<FinalComponentProps>
-  = stateWrapper(1, ([count, setCount]) =>
+const CounterContainer = stateWrapper(1, ([count, setCount]) =>
     ({ count, setCount }))(Counter);
 
 export default CounterContainer;

@@ -8,7 +8,8 @@
     "rules": {
         "no-any": true,
         "only-arrow-functions": true,
-        "no-expression-statement": false //required for useEffect
+        "no-expression-statement": false, //required for useEffect
+        "no-object-mutation": false // used in a test effect
     },
     "rulesDirectory": [
     ]

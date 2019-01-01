@@ -1,9 +1,13 @@
-import { FunctionComponent, useState, Dispatch, SetStateAction } from "react";
+import { FunctionComponent, useState } from "react";
 
-type Props = { count: number, name: string, setCount: Dispatch<SetStateAction<number>> };
+interface IProps {
+    readonly count: number;
+    readonly name: string;
+    readonly setCount: React.Dispatch<React.SetStateAction<number>>;
+}
 
 const Counter:
-    FunctionComponent<Props> =
+    FunctionComponent<IProps> =
     ({ name, count, setCount }) => {
         return <div>
             <p>Hi {name}, You clicked {count} times</p>
@@ -11,11 +15,11 @@ const Counter:
                 Click me
             </button>
         </div>;
-    }
+    };
 
-const CounterContainer: FunctionComponent<{ name: string }> = props => {
+const CounterContainer: FunctionComponent<{ readonly name: string }> = (props) => {
     const [count, setCount] = useState(1);
-    const finalProps: Props = { ...props, count, setCount };
+    const finalProps: IProps = { ...props, count, setCount };
     return <Counter {...finalProps} />;
 };
 
