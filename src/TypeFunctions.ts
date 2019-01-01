@@ -7,7 +7,7 @@ export const ReconstituteProps =
         (props: Omit<TFinal, keyof (TOther)> & { readonly children?: ReactNode }, other: TOther) =>
         ({ ...props, ...other } as unknown as TFinal);
 
-export type TupleToObject<TLeft, TRight, TOut extends object> = (_: [TLeft, TRight]) => TOut;
+export type TupleToObject<TLeft, TRight, TOut extends object> = (_: [TLeft, (_: TRight) => void]) => TOut;
 
 export type Func<TIn extends object, TOut extends object> = (_: TIn) => TOut;
 

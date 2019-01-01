@@ -1,4 +1,4 @@
-import { Dispatch, FunctionComponent, ReactNode, Reducer, useReducer } from "react";
+import { FunctionComponent, ReactNode, Reducer, useReducer } from "react";
 
 import { Omit, ReconstituteProps, TupleToObject } from "./TypeFunctions";
 
@@ -6,7 +6,7 @@ const ReducerWrapper =
     <TState extends object, TTransformed extends object, TAction extends object>
         (reducer: Reducer<TState, TAction>,
          initialState: TState,
-         mapTupleToProps: TupleToObject<TState, Dispatch<TAction>, TTransformed>,
+         mapTupleToProps: TupleToObject<TState, TAction, TTransformed>,
          initialAction?: TAction) =>
         <P extends TTransformed>(component: FunctionComponent<P>) =>
             (props: Omit<P, keyof TTransformed> & { readonly children?: ReactNode }) => {
