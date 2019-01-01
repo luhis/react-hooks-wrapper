@@ -11,8 +11,7 @@ export type TupleToObject<TLeft, TRight, TOut extends object> = (_: [TLeft, TRig
 
 export type Func<TIn extends object, TOut extends object> = (_: TIn) => TOut;
 
-export const Compose: <TReturn extends object, TIn extends object, TIntermediary extends object>
+export const Compose = <TReturn extends object, TIn extends object, TIntermediary extends object>
     (a: Func<FunctionComponent<TIntermediary>, FunctionComponent<TReturn>>,
-     b: Func<FunctionComponent<TIn>, FunctionComponent<TIntermediary>>)
-    => Func<FunctionComponent<TIn>, FunctionComponent<TReturn>> =
-    (a, b) => (p) => a(b(p));
+     b: Func<FunctionComponent<TIn>, FunctionComponent<TIntermediary>>) =>
+    (p: FunctionComponent<TIn>) => a(b(p));
