@@ -1,15 +1,11 @@
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent, ReactNode, useEffect } from "react";
 
 type EffectResponse = void | (() => void);
 
-type TypeDef = <TProps extends object>
-    (effectFuc: (props: TProps) => EffectResponse) =>
-    (component: FunctionComponent<TProps>) => FunctionComponent<TProps>;
-
-const EffectWrapper: TypeDef =
-    (effectFuc) =>
-        (component) =>
-            (props) => {
+const EffectWrapper =
+    <TProps extends object>(effectFuc: (props: TProps) => EffectResponse) =>
+        (component: FunctionComponent<TProps>) =>
+            (props: TProps & { readonly children?: ReactNode } ) => {
                 useEffect(() => effectFuc(props));
                 return component(props);
             };
