@@ -73,5 +73,5 @@ const Counter: FunctionComponent<Props> = ({ count, setCount, name }) =>
     </button>
   </div>;
 
-const CounterContainer: FunctionComponent<FinalProps> = stateWrapper(1, ([count, setCount]) => ({ count, setCount }))(Counter);
+const CounterContainer = stateWrapper(1, ([count, setCount]) => ({ count, setCount }))(Counter);
 ```
