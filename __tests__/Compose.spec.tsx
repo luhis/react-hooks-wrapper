@@ -19,7 +19,8 @@ const effectFuc: (props: IProps) => void = ({ count }) => {
     document.title = `You clicked ${count} times`;
 };
 
-const mapTuple: TupleToObject<number, number, IProps> = ([count, setCount]: [number, SetVal]) => ({ count, setCount });
+const mapTuple: TupleToObject<number, React.SetStateAction<number>, IProps> =
+    ([count, setCount]: [number, SetVal]) => ({ count, setCount });
 const s: Func<FunctionComponent<IProps>, FunctionComponent<{}>> = stateWrapper(1 as number, mapTuple);
 const e: Func<FunctionComponent<IProps>, FunctionComponent<IProps>> = effectWrapper(effectFuc);
 
