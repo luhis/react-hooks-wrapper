@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactNode, Reducer, useReducer } from "react";
+import { createElement, FunctionComponent, ReactNode, Reducer, useReducer } from "react";
 
 import { Omit, ReconstituteProps, TupleToObject } from "./TypeFunctions";
 
@@ -12,7 +12,7 @@ export default
             const ReducerWrapper =  (props: Omit<P, keyof TTransformed> & { readonly children?: ReactNode }) => {
                 const transformed = mapTupleToProps(useReducer(reducer, initialState, initialAction));
                 const finalProps = ReconstituteProps(props, transformed);
-                return component(finalProps);
+                return createElement(component, finalProps);
             };
 
             return ReducerWrapper;

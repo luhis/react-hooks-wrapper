@@ -12,7 +12,7 @@
   "dependencies": {
     "@types/node": "^10.12.18",
     "@types/react-dom": "^16.0.11",
-    "hookly": "^0.0.11",
+    "hookly": "0.0.12-alpha6",
     "react": "16.7.0-alpha.2",
     "react-dom": "16.7.0-alpha.2",
     "react-scripts": "^2.1.2",

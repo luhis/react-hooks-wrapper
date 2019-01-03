@@ -1,6 +1,6 @@
 {
   "name": "hookly",
-  "version": "0.0.11",
+  "version": "0.0.12-alpha6",
   "description": "A React plugin to present hooks as higher order functions",
   "keywords": [
     "react",
@@ -18,8 +18,8 @@
     "url": "git://github.com/luhis/react-hooks-wrapper.git"
   },
   "license": "ISC",
-  "main": "dist/Index.js",
-  "types": "dist/Index.d.ts",
+  "main": "dist/src/Index.js",
+  "types": "dist/src/Index.d.ts",
   "dependencies": {},
   "peerDependencies": {
     "react": "^16.7.0-alpha.2"
