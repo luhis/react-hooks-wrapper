@@ -1,9 +1,9 @@
 import { ReconstituteProps } from "../src/Index";
 
 test("reconstitute should", () => {
-  type extras = { c: number };
-  type props = { a: number, b: number, c: string };
-  type final = props & extras;
-  const res: final = ReconstituteProps<final, extras>({ a: 1, b: 2 }, { c: 3 });
-  expect(res).toEqual(<final>{ a: 1, b: 2, c: 3});
+  interface IExtras { readonly c: number; }
+  interface IProps { readonly a: number; readonly b: number; readonly c: string; }
+  type final = IProps & IExtras;
+  const res: final = ReconstituteProps<final, IExtras>({ a: 1, b: 2 }, { c: 3 });
+  expect(res).toEqual({ a: 1, b: 2, c: 3} as final);
 });
