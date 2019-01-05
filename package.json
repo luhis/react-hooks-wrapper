@@ -1,6 +1,6 @@
 {
   "name": "hookly",
-  "version": "0.0.12-alpha.6",
+  "version": "0.0.13",
   "description": "A React plugin to present hooks as higher order functions",
   "keywords": [
     "react",
@@ -43,6 +43,6 @@
     "typescript": "^3.2.2"
   },
   "files": [
-    "dist/src/**/*"
+    "dist/**/*"
   ]
 }
