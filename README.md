@@ -62,8 +62,7 @@ const CounterContainer: FunctionComponent<{ name: string }> = props => {
 It is possible to abstract the container component further, eventually creating a generic higher order component that will allow you to apply useState hooks to any component, allowing you to map the hook results to the properties of the component.
 
 ```TypeScript
-type FinalProps = {name: string};
-type Props = FinalProps & { count: number } & { setCount: setState<number> };
+type Props = {name: string, count: number, setCount: setState<number> };
 
 const Counter: FunctionComponent<Props> = ({ count, setCount, name }) =>
   <div>
@@ -72,6 +71,6 @@ const Counter: FunctionComponent<Props> = ({ count, setCount, name }) =>
       Click me
     </button>
   </div>;
-
+// ContainerCounter has type React.FunctionComponent<{ name: string }> but TS will infer this
 const CounterContainer = stateWrapper(1, ([count, setCount]) => ({ count, setCount }))(Counter);
 ```
