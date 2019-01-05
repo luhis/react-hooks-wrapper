@@ -3,7 +3,7 @@ import * as renderer from "react-test-renderer";
 
 import { setState, stateWrapper } from "../src/Index";
 
-interface IFinalComponentProps { readonly name: string; readonly children?: React.ReactNode }
+interface IFinalComponentProps { readonly name: string; readonly children?: React.ReactNode; }
 type Props = IFinalComponentProps & { readonly count: number; readonly setCount: setState<number> };
 
 const Counter: React.FunctionComponent<Props> = ({ count, setCount, name, children }) =>
