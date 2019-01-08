@@ -1,28 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StateWrapper should 1`] = `
-<div>
-  <p>
-    Hi 
-    matt
-    , You clicked 
-    1
-     times
-  </p>
-  <button
-    onClick={[Function]}
-  >
-    Click me
-  </button>
-  <span>
-    hello world
-  </span>
-  <span>
-    hello world 2
-  </span>
-</div>
-`;
-
 exports[`WithChildren should 1`] = `
 <div>
   <p>
