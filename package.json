@@ -22,7 +22,7 @@
   "types": "dist/Index.d.ts",
   "dependencies": {},
   "peerDependencies": {
-    "react": "^16.7.0-alpha.2"
+    "react": "^16.8.0-alpha.0"
   },
   "scripts": {
     "build": "tsc",
@@ -30,12 +30,12 @@
     "lint": "tslint -p tsconfig.json --fix"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.10",
-    "@types/react": "^16.7.17",
+    "@types/jest": "^23.3.12",
+    "@types/react": "^16.7.18",
     "@types/react-test-renderer": "^16.0.3",
     "jest": "^23.6.0",
-    "react": "16.7.0-alpha.2",
-    "react-test-renderer": "16.7.0-alpha.2",
+    "react": "^16.8.0-alpha.0",
+    "react-test-renderer": "16.8.0-alpha.0",
     "ts-jest": "^23.10.5",
     "ts-transformer-keys": "^0.3.4",
     "tslint": "^5.12.0",
