@@ -7,7 +7,7 @@ class ClassWithState extends React.Component<IProps, { readonly count: number }>
         super(props);
         this.state = { count: 0 };
     }
-    render() {
+    public render(): JSX.Element {
         const { name } = this.props;
         const { count } = this.state;
         const setCount = (c: number) => this.setState({ ...this.state, count: c });
