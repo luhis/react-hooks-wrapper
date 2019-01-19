@@ -19,7 +19,7 @@ class Container extends React.Component<IProps, IState> {
         super(props);
         this.state = { count: 0 };
     }
-    render() {
+    public render(): JSX.Element {
         const ps = {...this.props, state: this.state, setState: this.setState};
         return <Body {...ps}/>;
     }
