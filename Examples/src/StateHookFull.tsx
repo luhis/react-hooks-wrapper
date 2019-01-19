@@ -6,16 +6,14 @@ interface IProps {
     readonly setCount: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const Counter:
-    FunctionComponent<IProps> =
-    ({ name, count, setCount }) => {
-        return <div>
+const Counter: FunctionComponent<IProps> =
+    ({ name, count, setCount }) =>
+        <div>
             <p>Hi {name}, You clicked {count} times</p>
             <button onClick={() => setCount(count + 1)}>
                 Click me
             </button>
         </div>;
-    };
 
 const CounterContainer: FunctionComponent<{ readonly name: string }> = (props) => {
     const [count, setCount] = useState(1);

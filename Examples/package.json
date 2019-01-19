@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
+    "build": "react-scripts build",
     "lint": "tslint -p tsconfig.json --fix"
   },
   "author": "",
