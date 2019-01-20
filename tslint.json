@@ -9,8 +9,10 @@
         "no-any": true,
         "only-arrow-functions": true,
         "no-expression-statement": false, //required for useEffect
-        "no-object-mutation": false // used in a test effect
+        "no-object-mutation": false, // used in a test effect
+        "no-anonymous-components": true
     },
     "rulesDirectory": [
+        "./CustomTsLint"
     ]
 }
