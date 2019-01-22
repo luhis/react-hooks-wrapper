@@ -10,15 +10,9 @@ export class Rule extends Lint.Rules.TypedRule {
         description: "Prevent 'unknown' components being present in the react dev tools.",
         descriptionDetails:
             "Unknown type components are harder to debug.",
-        optionsDescription: "",
-        options: {
-            type: "list",
-            listType: {
-                type: "array",
-                items: { type: "string" },
-            },
-        },
-        optionExamples: [true, [true, "JQueryPromise"]],
+        optionsDescription: "Not configurable.",
+        options: null,
+        optionExamples: [true],
         rationale: Lint.Utils.dedent`
             todo
         `,
