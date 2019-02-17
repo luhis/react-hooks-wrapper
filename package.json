@@ -40,7 +40,7 @@
     "ts-transformer-keys": "^0.3.4",
     "tslint": "^5.12.0",
     "tslint-immutable": "^5.0.1",
-    "tslint-luhis": "0.0.0-alpha0002",
+    "tslint-luhis": "^0.0.0-alpha0003",
     "typescript": "^3.2.2"
   },
   "files": [

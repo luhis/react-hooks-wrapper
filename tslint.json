@@ -7,7 +7,7 @@
     ],
     "jsRules": {},
     "rules": {
-        "no-any": true,
+        "no-any": false, // required for state wrapper
         "only-arrow-functions": true,
         "no-expression-statement": false, //required for useEffect
         "no-object-mutation": false // used in a test effect
