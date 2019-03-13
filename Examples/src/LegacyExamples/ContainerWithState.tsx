@@ -1,26 +1,24 @@
 import React from "react";
 
-interface IState { readonly count: number; }
 interface IProps { readonly name: string; }
-type IBodyProps = IProps & { readonly state: IState; readonly setState: ((_: IState) => void); };
+type IBodyProps = IProps & { readonly count: number; readonly setCount: ((_: number) => void); };
 
 const Body: React.FunctionComponent<IBodyProps> =
-    ({ name, state, setState }) =>
-        <div>
-            <h1>Hello, world!</h1>
-            <h2>Hi {name}, You clicked {state.count} times</h2>
-            <button onClick={() => setState({ ...state, count: state.count + 1 })}>
+    ({ name, count, setCount }) =>
+        (<div>
+            <h2>Hi {name}, You clicked {count} times</h2>
+            <button onClick={() => setCount(count + 1)}>
                 Click me
             </button>
-        </div>;
+        </div>);
 
-class Container extends React.Component<IProps, IState> {
+class Container extends React.Component<IProps, number> {
     constructor(props: IProps) {
         super(props);
-        this.state = { count: 0 };
+        this.state = 0;
     }
     public render(): JSX.Element {
-        const ps = {...this.props, state: this.state, setState: this.setState};
+        const ps = {...this.props, count: this.state, setCount: this.setState};
         return <Body {...ps}/>;
     }
 }

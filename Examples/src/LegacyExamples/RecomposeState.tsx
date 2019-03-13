@@ -1,19 +1,17 @@
 import React from "react";
 import { withState } from "recompose";
 
-interface IState { readonly count: number; }
-interface IBodyProps { readonly name: string; readonly state: IState; readonly setCount: ((_: IState) => IState); }
+interface IBodyProps { readonly name: string; readonly count: number; readonly setCount: ((_: number) => number); }
 
 const Body: React.FunctionComponent<IBodyProps> =
-    ({ name, state, setCount }) =>
-        <div>
-            <h1>Hello, world!</h1>
-            <h2>Hi {name}, You clicked {state} times</h2>
-            <button onClick={() => setCount({ ...state, count: state.count + 1 })}>
+    ({ name, count, setCount }) =>
+        (<div>
+            <h2>Hi {name}, You clicked {count} times</h2>
+            <button onClick={() => setCount( count + 1)}>
                 Click me
             </button>
-        </div>;
+        </div>);
 
-const Container = withState("state", "setCount", { count: 0 })(Body);
+const Container = withState("count", "setCount", 0)(Body);
 
 export default Container;

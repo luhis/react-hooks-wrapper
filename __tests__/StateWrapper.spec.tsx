@@ -15,7 +15,7 @@ const Counter: React.FunctionComponent<Props> = ({ count, setCount, name }) =>
     </div>;
 
 const CounterContainer: React.FunctionComponent<IFinalComponentProps>
-    = stateWrapper(1, ([count, setCount]) => ({ count, setCount }))(Counter);
+    = stateWrapper(([count, setCount]) => ({ count, setCount }), 1)(Counter);
 
 test("StateWrapper should", () => {
     const myComponent = renderer.create(<CounterContainer name="matt"/>).toJSON();

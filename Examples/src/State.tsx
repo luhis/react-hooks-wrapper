@@ -15,7 +15,7 @@ const Counter: React.FunctionComponent<IProps> = ({ count, setCount, name }) =>
       </button>
   </div>;
 
-const CounterContainer = stateWrapper(1, ([count, setCount]) =>
-    ({ count, setCount }))(Counter);
+const CounterContainer = stateWrapper(([count, setCount]) =>
+    ({ count, setCount }), 1)(Counter);
 
 export default CounterContainer;

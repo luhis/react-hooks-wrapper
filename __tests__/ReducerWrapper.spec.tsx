@@ -32,8 +32,8 @@ const Counter: React.FunctionComponent<Props> = ({ state, dispatch, name }) =>
         </button>
     </div>;
 
-const Container: React.FunctionComponent<IFinalProps> = reducerWrapper(reducer, { count: 0 }, ([state, dispatch]) =>
-    ({ state, dispatch }))(Counter);
+const Container: React.FunctionComponent<IFinalProps> = reducerWrapper(([state, dispatch]) =>
+    ({ state, dispatch }), reducer, { count: 0 })(Counter);
 
 test("ReducerWrapper should", () => {
     const myComponent = renderer.create(<Container name="matt" />).toJSON();

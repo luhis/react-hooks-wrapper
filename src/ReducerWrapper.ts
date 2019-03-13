@@ -4,9 +4,9 @@ import { Omit, ReconstituteProps, TupleToObject } from "./TypeFunctions";
 
 export default
     <TState extends object, TTransformed extends object, TAction extends object>
-        (reducer: Reducer<TState, TAction>,
+        (mapTupleToProps: TupleToObject<TState, TAction, TTransformed>,
+         reducer: Reducer<TState, TAction>,
          initialState: TState,
-         mapTupleToProps: TupleToObject<TState, TAction, TTransformed>,
          initialAction?: TAction) =>
         <P extends TTransformed>(component: FunctionComponent<P>) => {
             const ReducerWrapper =  (props: Omit<P, keyof TTransformed> & { readonly children?: ReactNode }) => {
