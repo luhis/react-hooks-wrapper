@@ -7,7 +7,7 @@ const Body: React.FunctionComponent<IBodyProps> =
     ({ name, count, setCount }) =>
         (<div>
             <h2>Hi {name}, You clicked {count} times</h2>
-            <button onClick={() => setCount( count + 1)}>
+            <button onClick={() => setCount(count + 1)}>
                 Click me
             </button>
         </div>);

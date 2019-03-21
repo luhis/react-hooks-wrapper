@@ -12,13 +12,13 @@ const Body: React.FunctionComponent<IBodyProps> =
             </button>
         </div>);
 
-class Container extends React.Component<IProps, number> {
+class Container extends React.Component<IProps, { count: number}> {
     constructor(props: IProps) {
         super(props);
-        this.state = 0;
+        this.state = { count: 0};
     }
     public render(): JSX.Element {
-        const ps = {...this.props, count: this.state, setCount: this.setState};
+        const ps = {...this.props, count: this.state.count, setCount: (c: number) => this.setState(state => ({...state, count: c}))};
         return <Body {...ps}/>;
     }
 }

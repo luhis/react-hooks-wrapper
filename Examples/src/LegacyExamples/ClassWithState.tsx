@@ -12,7 +12,7 @@ class ClassWithState extends React.Component<IProps, { count: number}> {
         return (
             <div>
                 <h2>Hi {name}, You clicked {this.state.count} times</h2>
-                <button onClick={() => this.setState({...this.state, count: this.state.count + 1 })}>
+                <button onClick={() => this.setState(s => ({...s, count: s.count + 1 }))}>
                     Click me
                 </button>
             </div>
