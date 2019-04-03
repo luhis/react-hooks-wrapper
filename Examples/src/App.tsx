@@ -9,16 +9,16 @@ import State from "./State";
 const App: React.FunctionComponent = () => {
     return (
       <>
-        State:
-        <State name="matt from App.tsx" />
-        Effect:
+        {/* State: */}
+        <State name="Matt" />
+        {/* Effect:
         <Effect />
         Reducer:
         <Reducer name="hello from app.tsx"/>
         Memo:
         <MemoState name="hello from app.tsx"/>
         Class:
-        <ClassWithState name="matt"/>
+        <ClassWithState name="matt"/> */}
       </>
     );
 };
